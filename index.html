@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Semilla Dandelion</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-bs-spy="scroll" data-bs-target="navbar">
+    <!-- con  data-bs-spy="scroll" data-bs-target="navbar", los id en las secciones y los href
+      apuntando a los id de las secciones se puede hacer el navbar se ilumine al pasar de sección en sección-->
+    <!-- header -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark header sticky-top"
+      id="navbar"
+    >
+      <!-- navbar-dark pone las letras para fondo oscuro, bg-dark pone el fondo oscuro -->
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="./img/Dandelion.png" alt="dandelion logo" />
+          Semilla Dandelion
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <!-- me-auto es que calcula automaticamente el margin que debe ir al final para que quede a la izquierda  -->
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#main"
+                >La conferencia</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#speakers">Las oradores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#place-time">Dónde y Cuándo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#desicion">Nuestra Decisión</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link text-dandelion"
+                data-bs-toggle="modal"
+                data-bs-target="#modal-compra"
+                href="#"
+                >Comprar Tickets</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- /header -->
+    <!-- main -->
+    <div
+      class="carousel slide carousel-fade"
+      data-bs-ride="carousel"
+      data-pause="false"
+    >
+      <!-- data-bs-ride="carousel" define que itere el carousel al cargar, en true solo al hacer click en la primer imagen -->
+      <!-- importante sumar el crossfade de B con CSS:
+        .carousel-item {
+        transition: transform 2s ease, opacity 4s ease-out;
+        } para hacer la transición -->
+      <!-- con data-pause false se quita el frenado del carousel al hacer hover -->
+      <div class="carousel-inner" id="main">
+        <div class="carousel-item active" data-bs-interval="3500">
+          <img
+            src="./img/carousel/plants-gb6fd7970f_1280.jpg"
+            class="d-block w-100"
+            alt="niño transplantando"
+          />
+        </div>
+        <div class="carousel-item" data-bs-interval="3500">
+          <img
+            src="./img/carousel/pumpkin-g703e36dcd_1280.jpg"
+            class="d-block w-100"
+            alt="diferentes especies de calabazas"
+          />
+        </div>
+        <div class="carousel-item" data-bs-interval="3500">
+          <img
+            src="./img/carousel/pexels-greta-hoffman-7728082.jpg"
+            class="d-block w-100"
+            alt="persona plantando"
+          />
+        </div>
+        <div class="carousel-item" data-bs-interval="3500">
+          <img
+            src="./img/carousel/vegetables-g3bc5d6bfb_1280.jpg"
+            class="d-block w-100"
+            alt="variedad de vegetales"
+          />
+        </div>
+        <div class="overlay">
+          <!-- este div es para agregar una capa por encima de las imagenes
+          para esto ponemos el carousel en relative y este en absolute y fijamos el top,bottom,left,right en 0.
+          .carousel {
+            position: relative;
+          }
+          .carousel .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            z-index: 1;
+            } -->
+          <div class="container">
+            <div class="row align-items-center">
+              <!-- para alinear el texto del col verticalmente debemos hacer que el container y el row midan el 100% del height,
+              sino sólo miden el tamaño de contenido y agregar el align-items-center
+              .overlay .container,
+              .overlay .row {
+                height: 100%;
+              } -->
+              <div class="col-md-6 offset-md-6 text-center text-md-end">
+                <!-- col-md-6 permite que a partir de tamaños medianos de pantalla ocupe 6 columnas, es decir, la mitad.
+                Viéndose en la mitad derecha gracias al offset ya que lo corre 6 columnas más.
+                El text-md-end hace que se vea a la derecha corrido el texto a partir de medianos y para pequeños center gracias
+                al text-center.-->
+                <h1>Conferencia Semilla Dandelion</h1>
+                <p class="d-none d-md-block">
+                  <!-- hace el d-none que sea display none pero el d-md-block permite que en dispositivos medianos sea block -->
+                  Conferencia realizada para conocer nuevas implementaciones en
+                  la cadena de producción de alimentos en pos de garantizar una
+                  <a
+                    href="#"
+                    data-bs-toggle="tooltip"
+                    data-bs-title="Derecho de la población de elegir políticas y formas de producción para una distribución sostenible,
+                    equitativa, ética y culturalmente acorde de alimentos."
+                    >Soberanía Alimentaria</a
+                  >
+                  mínima necesaria
+                </p>
+                <button
+                  type="button"
+                  class="btn btn-outline-warning btn-wheat"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modal-compra"
+                  href=""
+                >
+                  Comprar Tickets
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleFade"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleFade"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button> -->
+      <!-- ESTO LO QUITAMOS PARA QUE NO SE PUEDA HACER CAROUSEL Y SIGA PASANDO SÓLO -->
+      <!-- speakers -->
+      <section id="speakers" class="speakers">
+        <!-- mt-4 es margin top -->
+        <article class="container">
+          <div class="row">
+            <div class="col text-center text-uppercase mt-5">
+              <small>Conoce a los oradores</small>
+              <h2>Oradores</h2>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-6 my-4" style="max-width: 20rem">
+              <div class="card">
+                <img
+                  src="./img/cards/women-four.png"
+                  class="card-img-top"
+                  alt="foto de la Licenciada Sofía Ramallo"
+                />
+                <div class="card-body">
+                  <div class="badge mb-1">
+                    <span>Nuevas herramientas a implementar</span>
+                  </div>
+                  <div class="text-start">
+                    <h5 class="card-title">Lic. Sofía Ramallo</h5>
+
+                    <p class="card-text">
+                      Nutricionista con Posgrado en Tecnología Alimentaria.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 my-4" style="max-width: 20rem">
+              <div class="card">
+                <img
+                  src="./img/cards/women-three.png"
+                  class="card-img-top"
+                  alt="foto de la Licenciada Romina López Carrera"
+                />
+                <div class="card-body">
+                  <div class="badge mb-1">
+                    <span>Alimentación Soberana en la Posmodernidad</span>
+                  </div>
+                  <div class="text-start">
+                    <h5 class="card-title">Lic. Romina López Carrera</h5>
+                    <p class="card-text">
+                      Licenciada en Socioantropología con Posgrado en Soberanía
+                      Alimentaria.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 my-4" style="max-width: 20rem">
+              <div class="card">
+                <img
+                  src="./img/cards/men.png"
+                  class="card-img-top"
+                  alt="foto del Ingeniero Enrique Suárez"
+                />
+                <div class="card-body">
+                  <div class="badge mb-1">
+                    <span>Preservación de especies vegetales</span>
+                  </div>
+                  <div class="text-start">
+                    <h5 class="card-title">Ing. Enrique Suárez</h5>
+                    <p class="card-text">
+                      Ingeniero Agrónomo realizando ensayos en semillas
+                      orgánicas.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- /speakers -->
+      <!-- donde y cuando -->
+      <section id="place-time" class="place-time my-5">
+        <article class="container-fluid">
+          <div class="row">
+            <div class="col-12 col-md-6 p-0">
+              <img src="./img/fluid/auditorio.jpg" alt="auditorio" />
+            </div>
+            <div class="col-12 col-md-6 my-5">
+              <h2 class="">Auditorio Independencia - Agosto 2023</h2>
+
+              <p>
+                Desde abril de 2017 la sala es administrada por una comunidad de
+                entusiastas teatrales, quienes han desarrollado un plan de
+                inversión y puesta en valor del Auditorio. La puesta en valor de
+                esta magnífica sala incluye, entre otras mejoras, una renovada
+                estructura edilicia, nuevas instalaciones técnicas y servicios
+                de excelencia.
+              </p>
+
+              <a href="" class="btn btn-outline-light"> Conoce más </a>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- /donde y cuando -->
+      <!-- nuestra decisión -->
+      <section id="desicion" class="desicion mt-5 p-2">
+        <article class="container text-center">
+          <div class="row">
+            <div class="col mb-4 text-uppercase">
+              <small>Nuestra Decisión</small>
+              <h2>Sumate</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Orientado a todo profesional de la salud y productor interesado en
+              una Alimentación Sustentable, amigable con el cuerpo y el medio
+              ambiente.
+              <br />
+              <br />
+              Conoce los avances más novedosos con respecto a la genética de las
+              semillas autóctonas de la región.
+              <br />
+              <br />
+              El efecto a nivel social e individual de promover una conexión
+              entre la producción y la alimentación.
+              <br />
+              <br />
+              Cómo implementar y qué rol viene a ocupar una producción enfocada
+              en la Soberanía Alimentaria.
+
+              <br /><br /><br />
+              <h6 class="pt-5">
+                Deja tus datos para recibir las últimas novedades.
+              </h6>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-4 form-label">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Nombre"
+                  aria-label="Nombre"
+                />
+              </div>
+              <div class="col-12 col-md-4 form-label">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Apellido"
+                  aria-label="Apellido"
+                />
+              </div>
+              <div class="col-12 col-md-4 form-label">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Email"
+                  aria-label="Email"
+                />
+              </div>
+              <button
+                class="btn btn-send mb-5"
+                style="width: 5rem; height: 2.5rem"
+              >
+                Enviar
+              </button>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- /nuestra decisión -->
+    </div>
+    <!-- /main -->
+    <!-- footer -->
+    <footer class="pb-4 pt-4">
+      <!-- agrega 4 de padding bottom y 4 de padding top para lo mismo se puede usar py-4 -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 col-lg text-center">
+            <!-- El col 12 aplica para los pequeños y medianos, recién en grandes se ve el cambio -->
+            <a href="">Preguntas frecuentes</a>
+          </div>
+          <div class="col-12 col-lg text-center"><a href="">Prensa</a></div>
+          <div class="col-12 col-lg text-center">
+            <a href="">Contáctanos</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- /footer -->
+    <!-- modal -->
+    <div
+      class="modal fade"
+      id="modal-compra"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+              Modal title
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-row">
+                <div class="form-group col">
+                  <div class="input-group mb-3">
+                    <div class="input-group input-group-sm">
+                      <span class="input-group-text" id="inputGroup-sizing-sm"
+                        >Usuario
+                      </span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm"
+                      />
+                      <div class="input-group input-group-sm mb-3">
+                        <span
+                          class="input-group-text mt-2"
+                          id="inputGroup-sizing-sm"
+                          >Contraseña</span
+                        >
+                        <input
+                          type="text"
+                          class="form-control mt-2"
+                          aria-label="Sizing example input"
+                          aria-describedby="inputGroup-sizing-sm"
+                        />
+                      </div>
+                      <a class="cr-user" role="alert"
+                        >Para crear tu usuario haz click aquí</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="alert alert-warning" role="alert">
+                Primero registrate para comprar tu entrada
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-send">Comprar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /modal -->
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"
+  ></script>
+  <script src="./script.js"></script>
+</html>
